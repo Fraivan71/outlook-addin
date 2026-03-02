@@ -1,29 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
-  <meta charset="utf-8" />
-  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <meta charset="UTF-8">
+    <title>Inoltro Predefinito</title>
+    <script src="taskpane.js"></script> <!-- se hai JS da eseguire -->
 </head>
 <body>
-<script>
-Office.onReady(() => {
-  forwardMail();
-});
-
-function forwardMail() {
-  const destinatario = "destinatario@azienda.com";
-  const testo = "<p>Testo predefinito inserito automaticamente.</p>";
-
-  Office.context.mailbox.item.forwardAsync(
-    destinatario,
-    { htmlBody: testo },
-    function (result) {
-      if (result.status !== Office.AsyncResultStatus.Succeeded) {
-        console.log(result.error.message);
-      }
-    }
-  );
-}
-</script>
+    <h1>Inoltro Predefinito</h1>
+    <p>Questo add-in inoltra la mail selezionata.</p>
 </body>
 </html>
