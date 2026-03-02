@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.1"
+           xsi:type="MailApp">
+
+  <!-- GUID valida -->
+  <Id>cdb087bf-82d5-4664-b536-c98173a1615d</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Ivan</ProviderName>
+  <DefaultLocale>it-IT</DefaultLocale>
+  <DisplayName DefaultValue="Inoltro Predefinito"/>
+  <Description DefaultValue="Inoltra la mail aperta con testo predefinito."/>
+
+  <!-- Icone (devono esistere realmente nel repo) -->
+  <IconUrl DefaultValue="https://fraivan71.github.io/outlook-addin/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://fraivan71.github.io/outlook-addin/icon-80.png"/>
+
+  <!-- Dominio del taskpane -->
+  <AppDomains>
+    <AppDomain>https://fraivan71.github.io</AppDomain>
+  </AppDomains>
+
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+
+  <Requirements>
+    <Sets DefaultMinVersion="1.5">
+      <Set Name="Mailbox"/>
+    </Sets>
+  </Requirements>
+
+  <Permissions>ReadWriteMailbox</Permissions>
+
+  <!-- VersionOverrides moderno -->
+  <VersionOverrides xsi:type="VersionOverridesV1_1"
+                    xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1">
+
+    <Hosts>
+      <Host xsi:type="MailHost">
+
+        <DesktopFormFactor>
+          <ExtensionPoint xsi:type="MessageReadCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="group1">
+                <Label resid="groupLabel"/>
+
+                <Control xsi:type="Button" id="btnForward">
+                  <Label resid="buttonLabel"/>
+                  <Supertip>
+                    <Title resid="buttonLabel"/>
+                    <Description resid="buttonDescription"/>
+                  </Supertip>
+
+                  <Icon>
+                    <bt:Image size="16" resid="icon16"/>
+                    <bt:Image size="32" resid="icon32"/>
+                    <bt:Image size="80" resid="icon80"/>
+                  </Icon>
+
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="taskpaneUrl"/>
+                  </Action>
+
+                </Control>
+
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+
+      </Host>
+    </Hosts>
+
+    <Resources>
+      <bt:Images>
+        <bt:Image id="icon16" DefaultValue="https://fraivan71.github.io/outlook-addin/icon-16.png"/>
+        <bt:Image id="icon32" DefaultValue="https://fraivan71.github.io/outlook-addin/icon-32.png"/>
+        <bt:Image id="icon80" DefaultValue="https://fraivan71.github.io/outlook-addin/icon-80.png"/>
+      </bt:Images>
+
+      <bt:Urls>
+        <bt:Url id="taskpaneUrl" DefaultValue="https://fraivan71.github.io/outlook-addin/inoltra.html"/>
+      </bt:Urls>
+
+      <bt:ShortStrings>
+        <bt:String id="groupLabel" DefaultValue="Strumenti"/>
+        <bt:String id="buttonLabel" DefaultValue="Inoltra"/>
+      </bt:ShortStrings>
+
+      <bt:LongStrings>
+        <bt:String id="buttonDescription"
+                   DefaultValue="Inoltra la mail con testo predefinito."/>
+      </bt:LongStrings>
+    </Resources>
+
+  </VersionOverrides>
+
+</OfficeApp>
